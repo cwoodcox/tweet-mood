@@ -28,6 +28,10 @@ class SearchController < ApplicationController
       total + sentiment['score'].to_f
     end / @sentiments[city_1.name].length
 
+    @cities.last['overall'] = @sentiments[city_2.name].reduce(0) do |total,sentiment|
+      total + sentiment['score'].to_f
+    end / @sentiments[city_2.name].length
+
     render action: :index
   end
 
