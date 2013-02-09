@@ -1,0 +1,6 @@
+<%= simple_form_for :search, url: search_path, method: 'post' do |f| %>
+  <%= f.input 'query' %>
+  <%= f.input 'city_1' %>
+  <%= f.input 'city_2' %>
+  <%= f.button :submit, value: "search!" %>
+<% end -%>
