@@ -43,6 +43,7 @@ GEM
     coffee-script-source (1.4.0)
     cookiejar (0.3.0)
     daemons (1.1.9)
+    diff-lcs (1.1.3)
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
       cookiejar
@@ -108,6 +109,14 @@ GEM
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.2)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -151,6 +160,7 @@ DEPENDENCIES
   pg
   pry
   rails (= 3.2.11)
+  rspec
   sass-rails (~> 3.2.3)
   tweetstream
   uglifier (>= 1.0.3)
