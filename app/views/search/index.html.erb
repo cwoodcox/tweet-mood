@@ -8,14 +8,14 @@
 <% @cities.each do |city| -%>
   <table>
     <tr>
-      <th><%= city %></th>
+      <th><%= "#{city['name']} (#{city['overall']})" %></th>
     </tr>
       <th>Sentiment (Severity)</th>
       <th>Tweet</th>
     </tr>
-    <%= @sentiments[city].each do |sentiment| %>
+    <% @sentiments[city['name']].each do |sentiment| %>
       <tr>
-        <td><%= sentiment['type'] %> (<%= sentiment['score'] %></td>
+        <td><%= sentiment['type'] %> (<%= sentiment['score'] %>)</td>
         <td><%= sentiment['text'] %></td>
       </tr>
     <% end -%>

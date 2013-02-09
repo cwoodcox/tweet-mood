@@ -13,7 +13,7 @@ class SearchController < ApplicationController
     city_1_tweets = Twitter.search(params[:search][:query], geocode: city_1_geo.join(',') + ",25mi").statuses.collect(&:text)
     city_2_tweets = Twitter.search(params[:search][:query], geocode: city_2_geo.join(',') + ",25mi").statuses.collect(&:text)
 
-    @cities = [city_1.name, city_2.name]
+    @cities = [{ 'name' => city_1.name }, { 'name' => city_2.name }]
 
     @sentiments = {}
     @sentiments[city_1.name] = city_1_tweets.collect do |tweet|
@@ -23,6 +23,10 @@ class SearchController < ApplicationController
     @sentiments[city_2.name] = city_2_tweets.collect do |tweet|
       AlchemyAPI.search(:sentiment_analysis, text: tweet).merge({'text' => tweet})
     end
+
+    @cities.first['overall'] = @sentiments[city_1.name].reduce(0) do |total,sentiment|
+      total + sentiment['score'].to_f
+    end / @sentiments[city_1.name].length
 
     render action: :index
   end
