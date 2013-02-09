@@ -12,6 +12,14 @@ class SearchController < ApplicationController
 
     city_1_tweets = Twitter.search(params[:search][:query], geocode: city_1_geo.join(',') + ",25mi").statuses.collect(&:text)
     city_2_tweets = Twitter.search(params[:search][:query], geocode: city_2_geo.join(',') + ",25mi").statuses.collect(&:text)
+
+    @city_1_sentiments = city_1_tweets.collect do |tweet|
+      AlchemyAPI.search :sentiment_analysis, text: tweet
+    end
+
+    @city_2_sentiments = city_2_tweets.collect do |tweet|
+      AlchemyAPI.search :sentiment_analysis, text: tweet
+    end
   end
 
   def average_square array
