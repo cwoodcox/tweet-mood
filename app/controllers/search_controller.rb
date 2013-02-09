@@ -4,11 +4,11 @@ class SearchController < ApplicationController
   end
 
   def search
-    city_1_geo = Twitter.geo_search(query: params[:search][:city_1], granularity: 'city')
-    city_1_geo = average_square get_coords(city_1_geo)
+    city_1 = Twitter.geo_search(query: params[:search][:city_1], granularity: 'city')
+    city_1_geo = average_square get_coords(city_1)
 
-    city_2_geo = Twitter.geo_search(query: params[:search][:city_2], granularity: 'city')
-    city_2_geo = average_square get_coords(city_2_geo)
+    city_2 = Twitter.geo_search(query: params[:search][:city_2], granularity: 'city')
+    city_2_geo = average_square get_coords(city_2)
 
     city_1_tweets = Twitter.search(params[:search][:query], geocode: city_1_geo.join(',') + ",25mi").statuses.collect(&:text)
     city_2_tweets = Twitter.search(params[:search][:query], geocode: city_2_geo.join(',') + ",25mi").statuses.collect(&:text)
