@@ -4,3 +4,20 @@
   <%= f.input 'city_2' %>
   <%= f.button :submit, value: "search!" %>
 <% end -%>
+
+<% @cities.each do |city| -%>
+  <table>
+    <tr>
+      <th><%= city %></th>
+    </tr>
+      <th>Sentiment (Severity)</th>
+      <th>Tweet</th>
+    </tr>
+    <%= @sentiments[city].each do |sentiment| %>
+      <tr>
+        <td><%= sentiment['type'] %> (<%= sentiment['score'] %></td>
+        <td><%= sentiment['text'] %></td>
+      </tr>
+    <% end -%>
+  </table>
+<% end -%>
