@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'pg'
 
-gem 'tweetstream'
+gem 'twitter'
 gem 'alchemy-api-rb', require: 'alchemy_api'
 
 # Gems used only for assets and not required
