@@ -9,6 +9,7 @@ gem 'pg'
 
 gem 'twitter'
 gem 'alchemy-api-rb', require: 'alchemy_api'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
